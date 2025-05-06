@@ -1,9 +1,12 @@
 const {response} = require('express')
 
 const usuariosGet = (req,response)=>{
+    const query = req.query;
+    console.log(query);
     response.json({
         status: 'OK',
-        name: 'get Christian from Controller'
+        name: 'get Christian from Controller',
+        query
     })
 }
 
@@ -21,7 +24,27 @@ const usuariosPost = (req,response)=>{
     })
 }
 
+const usuariosPut = (req,response)=>{
+    //const idPut = req.params.idPut;
+    const {id} = req.params;
+    console.log(id )
+    response.json({
+        status: 'OK',
+        name: 'put Christian',
+        userSelec: id
+    })
+}
+
+const usuarioDelete = (req,response)=>{
+    response.json({
+        status: 'OK',
+        name: 'delete Christian'
+    })
+}
+
 module.exports = {
     usuariosGet,
-    usuariosPost
+    usuariosPost,
+    usuariosPut,
+    usuarioDelete
 }
