@@ -7,7 +7,8 @@ class Server{
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
-        this.endpoint = '/api/usuarios'
+        this.endpoint = '/api/usuarios';
+        this.endpointAuth = '/api/auth';
         //DBConnect
         this.conenectDB();
         //Middlewares
@@ -28,6 +29,8 @@ async conenectDB(){
     //Definir rutas
     routes(){
         this.app.use(this.endpoint, require('../routes/user'));
+        this.app.use(this.endpointAuth, require('../routes/auth'));
+
     }
     listen(){
         this.app.listen(this.port,()=>{
